@@ -9,6 +9,22 @@ void setup() {
     {GND, 7, 6},   //Stoplicht 3
     {GND, 9, 8}};  //Stoplicht 4
 
+  //We willen alle pins out.
+  int outMin = 2; // Lowest input pin
+  int outMax = 9; // Highest input pin
+    for(int i=inMin; i<=inMax; i++) {
+    pinMode(i, OUTPUT);
+  }
+
+  for (int j = outMin; j= < outMax; j++) {
+    if (j > outMax) {
+      j = outMin;
+    }
+    pinMode(j, HIGH);
+    delay(1000);
+    pinMode(j, LOW);
+  }
+
 }
 
 void loop() {
