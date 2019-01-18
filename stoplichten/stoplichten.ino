@@ -1,3 +1,15 @@
+  // and             &&
+  // and_eq          &=
+  // bitand          &
+  // bitor           |
+  // not             !
+  // not_eq          !=
+  // or              ||
+  // or_eq           |=
+  // xor             ^
+  // xor_eq          ^=
+
+
   //In een array zit een array. Eerst wordt de GND pin gegeven, dan die voor het groene LED,
   //Daarna voor het rode LED.
   //Bijv stoplicht 3 heeft GND-pin = GND, RLEd-pin = 5 en GLED-pin = 8:
@@ -46,8 +58,10 @@ void loop() {
   }
 
 //Check of pin aan is of niet
-  for (size_t h = 0; h < count; h++) {
-    /* code */
+  for (int p = 0; p < 7; p++) {
+    if (pinsMode[p] == 1) {
+
+    }
   }
 
 }
