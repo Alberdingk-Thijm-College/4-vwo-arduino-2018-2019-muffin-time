@@ -10,7 +10,8 @@
 
   //Alle pin-getallen (gesorteerd van laag naar hoog):
   int pins[8] = {stoplicht[0][1], stoplicht[0][0], stoplicht[1][1], stoplicht[1][0], stoplicht[2][1], stoplicht[2][0], stoplicht[3][1], stoplicht[3][0]};
-  int pinsRood[4] = {stoplicht[0][0], stoplicht[1][0], stoplicht[2][0], stoplicht[3][0]};
+//  int pinsRood[4] = {stoplicht[0][0], stoplicht[1][0], stoplicht[2][0], stoplicht[3][0]};
+  int pinsRood[4] = {3, 5, 7, 9};
 
 
   //We willen alle pins out.
@@ -19,14 +20,8 @@
 
 void setup() {
   Serial.begin(115200);
-//  pinMode(3, OUTPUT);
 
-
-//Alle pins op output:
-  for(int i = 0; i <= sizeof(pins); i++) {
-    pinMode(pins[i], OUTPUT);
-    Serial.println(i);
-  }
+  //We zetten niet gelijk alle pins op output, want dan verschijnt er een bug.
   
   
 }
@@ -34,15 +29,20 @@ void setup() {
 void loop() {
 
 //  Loop door alle stoplichten:
-  for (int j = outMin; j <= outMax; j++) {
-    if (j > outMax) {
-      j = outMin;
-    }
-    Serial.println(j);
-    digitalWrite(j, HIGH);
-    delay(1000);
-    digitalWrite(j, LOW);
-   }
+//  for (int j = outMin; j <= outMax; j++) {
+//    if (j > outMax) {
+//      j = outMin;
+//    }
+//    Serial.println(j);
+//    digitalWrite(j, HIGH);
+//    delay(1000);
+//    digitalWrite(j, LOW);
+//   }
+
+  for (int t = 0; t <=  3; t++) {
+    pinMode(pinsRood[t], HIGH);
+    digitalWrite(pinsRood[t], HIGH);
+  }
 
   
 }
