@@ -12,6 +12,7 @@
   int pins[8] = {stoplicht[0][1], stoplicht[0][0], stoplicht[1][1], stoplicht[1][0], stoplicht[2][1], stoplicht[2][0], stoplicht[3][1], stoplicht[3][0]};
   int pinsRood[4] = {stoplicht[0][0], stoplicht[1][0], stoplicht[2][0], stoplicht[3][0]};
   int pinsGroen[4] = {stoplicht[0][1], stoplicht[1][1], stoplicht[2][1], stoplicht[3][1]};
+  int pinsMode[8] = {0,0,0,0,0,0,0,0};
 
 
   //We willen alle pins out.
@@ -22,8 +23,8 @@ void setup() {
   Serial.begin(115200);
 
   //We zetten niet gelijk alle pins op output, want dan verschijnt er een bug.
-  
-  
+
+
 }
 
 void loop() {
@@ -44,5 +45,9 @@ void loop() {
     digitalWrite(pinsRood[t], HIGH);
   }
 
-  
+//Check of pin aan is of niet
+  for (size_t h = 0; h < count; h++) {
+    /* code */
+  }
+
 }
