@@ -10,8 +10,8 @@
 
   //Alle pin-getallen (gesorteerd van laag naar hoog):
   int pins[8] = {stoplicht[0][1], stoplicht[0][0], stoplicht[1][1], stoplicht[1][0], stoplicht[2][1], stoplicht[2][0], stoplicht[3][1], stoplicht[3][0]};
-//  int pinsRood[4] = {stoplicht[0][0], stoplicht[1][0], stoplicht[2][0], stoplicht[3][0]};
-  int pinsRood[4] = {3, 5, 7, 9};
+  int pinsRood[4] = {stoplicht[0][0], stoplicht[1][0], stoplicht[2][0], stoplicht[3][0]};
+  int pinsGroen[4] = {stoplicht[0][1], stoplicht[1][1], stoplicht[2][1], stoplicht[3][1]};
 
 
   //We willen alle pins out.
