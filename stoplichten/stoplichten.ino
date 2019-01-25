@@ -40,6 +40,11 @@ void setup() {
 
   //We zetten niet gelijk alle pins op output, want dan verschijnt er een bug.
 
+  pinMode(pinsGroen[1], OUTPUT);
+  digitalWrite(pinsGroen[1], HIGH);
+  pinsGroenMode[1] = 1;
+
+  
 
 }
 
@@ -56,30 +61,56 @@ void loop() {
 //    digitalWrite(j, LOW);
 //   }
 
-  for (int t = 0; t <=  3; t++) {
-    pinMode(pinsRood[t], OUTPUT);
-    digitalWrite(pinsRood[t], HIGH);
-    pinsRoodMode[t] = 1;
-  }
+//Alle rode stoplichten aan:
+//  for (int t = 0; t <=  3; t++) {
+//    pinMode(pinsRood[t], OUTPUT);
+//    digitalWrite(pinsRood[t], HIGH);
+//    pinsRoodMode[t] = 1;
+//  }
 
+
+
+//Alle groene stoplichten aan:
+//  for (int t = 0; t <=  3; t++) {
+//    pinMode(pinsGroen[t], OUTPUT);
+//    digitalWrite(pinsGroen[t], HIGH);
+//    pinsGroenMode[t] = 1;
+//  }
+
+  
 //Check of een groene stoplicht aan is of niet
   for (int p = 0; p <= 3; p++) {
+
     //Als er een stoplicht groen is, zet dan de corresponderende rode pin uit. Groene stoplichten > rode stoplichten
     if (pinsGroenMode[p] == 1) {
+
+      Serial.print("Pin aan pinsGroen nr: ");
+      Serial.println(p + 1);
+      
       pinsRoodMode[p] == 0;
       pinMode(pinsRood[p], OUTPUT);
       digitalWrite(pinsRood[p], LOW);
       //digitalWrite rood
 
-//Als we een groen stoplicht hebben gevonden die aan is, zetten we de andere groene stoplichten uit
+      //Als we een groen stoplicht hebben gevonden die aan is, zetten we de andere groene stoplichten uit
       for (int z = 0; z <= 3; z++) {
         if (z != p) {
           pinsGroenMode[z] = 0;
-          pinMode(pinsGroen[z], INPUT);
           digitalWrite(pinsGroen[z], LOW);
           //digitalWrite groen
         }
       }
+
+      //Als we een groen stoplicht aan hebben: Zet dan alle rode stoplichten aan behalve degene die correspondeert aan de groene pin:
+      for (int d = 0; d <= 3; d++) {
+        if (d != p) {
+          pinsRoodMode[d] = 0;
+          pinMode(pinsRood[d], OUTPUT);
+          digitalWrite(pinsRood[d], HIGH);
+          //digitalWrite groen
+        }
+      }
+      
     }
   }
 
