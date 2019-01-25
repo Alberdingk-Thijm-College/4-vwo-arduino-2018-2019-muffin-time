@@ -35,16 +35,27 @@
   int outMin = 2; // Lowest input pin
   int outMax = 9; // Highest input pin
 
+  //Een array met de volgorde van de stoplichten. Welke gaat aan en welke daarna?
+  int cycle[4] = {0,1,2,3};
+
 void setup() {
   Serial.begin(115200);
 
   //We zetten niet gelijk alle pins op output, want dan verschijnt er een bug.
 
-  pinMode(pinsGroen[1], OUTPUT);
-  digitalWrite(pinsGroen[1], HIGH);
-  pinsGroenMode[1] = 1;
+//  Zet
+//  pinMode(pinsGroen[1], OUTPUT);
+//  digitalWrite(pinsGroen[1], HIGH);
+//  pinsGroenMode[1] = 1;
 
-  
+
+  //Eerst alle stoplichten op rood:
+  //Alle rode stoplichten aan:
+    for (int t = 0; t <=  3; t++) {
+     pinMode(pinsRood[t], OUTPUT);
+     digitalWrite(pinsRood[t], HIGH);
+     pinsRoodMode[t] = 1;
+    }
 
 }
 
@@ -61,14 +72,6 @@ void loop() {
 //    digitalWrite(j, LOW);
 //   }
 
-//Alle rode stoplichten aan:
-//  for (int t = 0; t <=  3; t++) {
-//    pinMode(pinsRood[t], OUTPUT);
-//    digitalWrite(pinsRood[t], HIGH);
-//    pinsRoodMode[t] = 1;
-//  }
-
-
 
 //Alle groene stoplichten aan:
 //  for (int t = 0; t <=  3; t++) {
@@ -77,16 +80,28 @@ void loop() {
 //    pinsGroenMode[t] = 1;
 //  }
 
-  
+
+//  for (int a = 0; a <= 3; a++){
+//    pinMode(pinsRood[cycle[a]], OUTPUT);
+//    pinMode(pinsGroen[cycle[a]], OUTPUT);
+//
+//    digitalWrite(pinsGroen[cycle[a]], HIGH);
+//    pinsGroenMode[a] = 1;
+//
+//
+//    int secondenWachten = 1;
+//    delay(secondenWachten * 1000);
+//  }
+
 //Check of een groene stoplicht aan is of niet
   for (int p = 0; p <= 3; p++) {
 
     //Als er een stoplicht groen is, zet dan de corresponderende rode pin uit. Groene stoplichten > rode stoplichten
     if (pinsGroenMode[p] == 1) {
 
-      Serial.print("Pin aan pinsGroen nr: ");
-      Serial.println(p + 1);
-      
+      //Serial.print("Pin aan pinsGroen nr: ");
+      //Serial.println(p + 1);
+
       pinsRoodMode[p] == 0;
       pinMode(pinsRood[p], OUTPUT);
       digitalWrite(pinsRood[p], LOW);
@@ -110,8 +125,7 @@ void loop() {
           //digitalWrite groen
         }
       }
-      
+
     }
   }
-
 }
