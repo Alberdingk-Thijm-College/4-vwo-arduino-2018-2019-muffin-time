@@ -62,15 +62,21 @@ void loop() {
     pinsRoodMode[t] = 1;
   }
 
-//Check of pin aan is of niet
+//Check of een groene stoplicht aan is of niet
   for (int p = 0; p <= 3; p++) {
+    //Als er een stoplicht groen is, zet dan de corresponderende rode pin uit. Groene stoplichten > rode stoplichten
     if (pinsGroenMode[p] == 1) {
       pinsRoodMode[p] == 0;
+      pinMode(pinsRood[p], OUTPUT);
+      digitalWrite(pinsRood[p], LOW);
       //digitalWrite rood
 
+//Als we een groen stoplicht hebben gevonden die aan is, zetten we de andere groene stoplichten uit
       for (int z = 0; z <= 3; z++) {
         if (z != p) {
           pinsGroenMode[z] = 0;
+          pinMode(pinsGroen[z], INPUT);
+          digitalWrite(pinsGroen[z], LOW);
           //digitalWrite groen
         }
       }
