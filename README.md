@@ -9,3 +9,5 @@ Wij verdiepen ons in arrays en hoe je op een overzichtelijke manier de stoplicht
 Wij maken een kruispunt op kleine schaal. De stoplichten worden dan ook gerepresenteerd door LED's.
 
 Er zijn twee branches. De master branch wordt nagekeken door de docenten, de Dev branch zal de code bevatten waar mogelijk nog bugs in zitten.
+
+![Algemene informatie](https://user-images.githubusercontent.com/43268520/51743106-01e0af80-209c-11e9-8f5f-b6b2ef8ab147.jpg)
