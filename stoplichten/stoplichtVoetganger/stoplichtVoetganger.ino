@@ -104,6 +104,8 @@ void loop() {
   if (cycleMode == 1){
 //    digitalWrite(voetgangerStoplichtPins[1], HIGH);
     digitalWrite(voetgangerStoplichtPins[1], HIGH);
+
+    checkVoetganger();
     
     digitalWrite(pinsGroen[0], HIGH);
     digitalWrite(pinsRood[0], LOW);
