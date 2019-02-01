@@ -66,15 +66,8 @@ void setup() {
   
 }
 
-void loop() {
-  for (int p = 0; p <= 3; p ++) {
-    pinMode(pinsRood[p], OUTPUT);
-    pinMode(pinsGroen[p], OUTPUT);
-    pinMode(voetgangerStoplichtPins[0], OUTPUT);
-    pinMode(voetgangerStoplichtPins[1], OUTPUT);
-  }
-
-  if (digitalRead(buttonPin) == HIGH){
+void checkVoetganger() {
+    if (digitalRead(buttonPin) == HIGH){
     Serial.println("KNOP");
     cycleMode = 0;
     //Alles op rood en groen uit!
@@ -94,7 +87,18 @@ void loop() {
     //Voetgangerstoplicht op groen!
     delay(3 * 1000);
     digitalWrite(voetgangerStoplichtPins[0], LOW);
+    digitalWrite(voetgangerStoplichtPins[1], HIGH);
     cycleMode = 1;
+  }
+}
+
+
+void loop() {
+  for (int p = 0; p <= 3; p ++) {
+    pinMode(pinsRood[p], OUTPUT);
+    pinMode(pinsGroen[p], OUTPUT);
+    pinMode(voetgangerStoplichtPins[0], OUTPUT);
+    pinMode(voetgangerStoplichtPins[1], OUTPUT);
   }
 
   if (cycleMode == 1){
@@ -107,6 +111,7 @@ void loop() {
     digitalWrite(pinsGroen[0], LOW);
     digitalWrite(pinsRood[0], HIGH);
 
+    checkVoetganger();
   
     digitalWrite(pinsGroen[1], HIGH);
     digitalWrite(pinsRood[1], LOW);
@@ -114,13 +119,16 @@ void loop() {
     digitalWrite(pinsGroen[1], LOW);
     digitalWrite(pinsRood[1], HIGH);
 
+    checkVoetganger();
+
     digitalWrite(pinsGroen[2], HIGH);
     digitalWrite(pinsRood[2], LOW);
     delay(1000);
     digitalWrite(pinsGroen[2], LOW);
     digitalWrite(pinsRood[2], HIGH);
 
-  
+    checkVoetganger();
+
     digitalWrite(pinsGroen[3], HIGH);
     digitalWrite(pinsRood[3], LOW);
     delay(1000);
