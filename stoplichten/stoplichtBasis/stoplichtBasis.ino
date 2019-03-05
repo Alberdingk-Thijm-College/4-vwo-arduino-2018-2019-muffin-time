@@ -60,72 +60,34 @@ void setup() {
 }
 
 void loop() {
-
-//  Loop door alle stoplichten:
-//  for (int j = outMin; j <= outMax; j++) {
-//    if (j > outMax) {
-//      j = outMin;
-//    }
-//    Serial.println(j);
-//    digitalWrite(j, HIGH);
-//    delay(1000);
-//    digitalWrite(j, LOW);
-//   }
-
-
-//Alle groene stoplichten aan:
-//  for (int t = 0; t <=  3; t++) {
-//    pinMode(pinsGroen[t], OUTPUT);
-//    digitalWrite(pinsGroen[t], HIGH);
-//    pinsGroenMode[t] = 1;
-//  }
-
-
-  for (int a = 0; a <= 3; a++){
-   pinMode(pinsRood[cycle[a]], OUTPUT);
-   pinMode(pinsGroen[cycle[a]], OUTPUT);
-
-   digitalWrite(pinsGroen[cycle[a]], HIGH);
-   pinsGroenMode[a] = 1;
-
-
-   int secondenWachten = 1;
-   delay(secondenWachten * 1000);
-
-
-    //Check of een groene stoplicht aan is of niet
-    for (int p = 0; p <= 3; p++) {
-
-      //Als er een stoplicht groen is, zet dan de corresponderende rode pin uit. Groene stoplichten > rode stoplichten
-      if (pinsGroenMode[p] == 1) {
-
-      //Serial.print("Pin aan pinsGroen nr: ");
-      //Serial.println(p + 1);
-
-      pinsRoodMode[p] == 0;
-      pinMode(pinsRood[p], OUTPUT);
-      digitalWrite(pinsRood[p], LOW);
-      //digitalWrite rood
-
-        //Als we een groen stoplicht hebben gevonden die aan is, zetten we de andere groene stoplichten uit
-         for (int z = 0; z <= 3; z++) {
-           if (z != p) {
-             pinsGroenMode[z] = 0;
-             digitalWrite(pinsGroen[z], LOW);
-             //digitalWrite groen
-           }
-         }
-
-//        Als we een groen stoplicht aan hebben: Zet dan alle rode stoplichten aan behalve degene die correspondeert aan de groene pin:
-        for (int d = 0; d <= 3; d++) {
-          if (d != p) {
-            pinsRoodMode[d] = 0;
-            pinMode(pinsRood[d], OUTPUT);
-            digitalWrite(pinsRood[d], HIGH);
-          }
-        }
-
-      }
-    }
+  for (int p = 0; p <= 3; p ++) {
+    pinMode(pinsRood[p], OUTPUT);
+    pinMode(pinsGroen[p], OUTPUT);
   }
+  
+  digitalWrite(pinsGroen[0], HIGH);
+  digitalWrite(pinsRood[0], LOW);
+  delay(1000);
+  digitalWrite(pinsGroen[0], LOW);
+  digitalWrite(pinsRood[0], HIGH);
+
+  
+  digitalWrite(pinsGroen[1], HIGH);
+  digitalWrite(pinsRood[1], LOW);
+  delay(1000);
+  digitalWrite(pinsGroen[1], LOW);
+  digitalWrite(pinsRood[1], HIGH);
+
+  digitalWrite(pinsGroen[2], HIGH);
+  digitalWrite(pinsRood[2], LOW);
+  delay(1000);
+  digitalWrite(pinsGroen[2], LOW);
+  digitalWrite(pinsRood[2], HIGH);
+
+  
+  digitalWrite(pinsGroen[3], HIGH);
+  digitalWrite(pinsRood[3], LOW);
+  delay(1000);
+  digitalWrite(pinsGroen[3], LOW);
+  digitalWrite(pinsRood[3], HIGH);
 }
